@@ -10,7 +10,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // ====== CONFIG ======
-const FIBO = ["0","1","2","3","5","8","13","20","40","100","?","☕"];
+const FIBO = ["0,5","1","2","3","5","8","13","20","40","100","?","☕"];
 const ALLOW_EVERYONE_KICK = true; // comme tu voulais
 // =====================
 
@@ -510,4 +510,5 @@ leaveBtn.onclick = leave;
 const params = new URLSearchParams(location.search);
 const roomFromUrl = sanitizeRoomId(params.get("room"));
 if (roomFromUrl) roomIdInput.value = roomFromUrl;
+
 
