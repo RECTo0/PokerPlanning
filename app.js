@@ -359,7 +359,7 @@ function bindRoom(){
   renderCards();
 
   // Reset : facilitateur seulement (tu peux le laisser, c’est plus safe)
-  resetBtn.classList.toggle("hidden", !state.isFacilitator);
+  resetBtn.classList.remove("hidden");
 
   // pas de badge facilitateur visible, mais on garde "whoami" simple
   whoami.textContent = `${state.name} • ${state.role === "observer" ? "Observateur" : "Joueur"}`;
@@ -469,7 +469,7 @@ async function revealToggle(){
 
 // Reset (facilitateur)
 async function reset(){
-  if (!state.isFacilitator) return;
+  
 
   const vs = await getDocs(votesCol(state.roomId));
   for (const v of vs.docs) await deleteDoc(v.ref);
@@ -510,3 +510,4 @@ leaveBtn.onclick = leave;
 const params = new URLSearchParams(location.search);
 const roomFromUrl = sanitizeRoomId(params.get("room"));
 if (roomFromUrl) roomIdInput.value = roomFromUrl;
+
